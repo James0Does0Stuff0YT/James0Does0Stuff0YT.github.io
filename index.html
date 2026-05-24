@@ -68,6 +68,7 @@
 
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
+            .stats-container { grid-template-columns: 1fr; }
         }
 
         .card {
@@ -103,6 +104,7 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
         .btn {
@@ -114,6 +116,7 @@
             font-weight: bold;
             border: 1px solid #3a3a3a;
             transition: background 0.2s, color 0.2s;
+            min-width: 140px;
         }
 
         .btn:hover {
@@ -121,6 +124,32 @@
             color: #121212;
             border-color: #00adb5;
         }
+
+        /* Dynamic Creator Stats Grid */
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .stat-box {
+            background: #151515;
+            border: 1px dashed #3a3a3a;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.95rem;
+            color: #ffffff;
+        }
+
+        .stat-count {
+            color: #00adb5;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .youtube-color { border-left: 4px solid #ff0000; }
+        .kick-color { border-left: 4px solid #53fc18; }
     </style>
 </head>
 <body>
@@ -149,6 +178,15 @@
         <div class="btn-container">
             <a href="https://youtube.com/@james_does_stuff_yt?si=hKvTtBn4d4i9_r1s" target="_blank" class="btn">YouTube</a>
             <a href="https://kick.com/james-does-stuff-yt" target="_blank" class="btn">Kick Stream</a>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box youtube-color">
+                YouTube: <span class="stat-count">91</span> Subscribers
+            </div>
+            <div class="stat-box kick-color">
+                Kick: <span class="stat-count">5</span> Followers
+            </div>
         </div>
 
     </div>
