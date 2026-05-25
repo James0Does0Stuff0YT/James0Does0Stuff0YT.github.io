@@ -50,18 +50,11 @@
         }
 
         /* Projects Section Grid */
-        h2 {
+        h2, h3 {
             color: #ffffff;
             text-align: left;
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #2d2d2d;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #ffffff;
-            text-align: left;
-            font-size: 1.5rem;
+            margin-top: 30px;
             margin-bottom: 15px;
             border-bottom: 2px solid #2d2d2d;
             padding-bottom: 5px;
@@ -97,6 +90,8 @@
         .card h3 {
             color: #ffffff;
             margin: 0 0 10px 0;
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .card p {
@@ -133,12 +128,19 @@
             border-color: #00adb5;
         }
 
+        /* Discord Branding Style */
+        .btn-discord {
+            background: #5865F2;
+            border-color: #454FBF;
+        }
+
         /* Dynamic Creator Stats Grid */
         .stats-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .stat-box {
@@ -196,9 +198,12 @@
                 Kick: <span class="stat-count">20</span> Followers
             </div>
         </div>
-        <h3>Chat With Me</h3>
+
+        <h3>Chat/Play With Me</h3>
         <div class="btn-container">
-            <a href="https://discord.gg/UK4gF8E9zw" target="_blank">My Main Discord Server</a>
+            <a href="https://discord.gg/UK4gF8E9zw" target="_blank" class="btn btn-discord">Main Server</a>
+            <a href="https://discord.gg/eWXjcyzkUQ" target="_blank" class="btn btn-discord">Minecraft Kingdoms</a>
+        </div>
     </div>
 
 </body>
