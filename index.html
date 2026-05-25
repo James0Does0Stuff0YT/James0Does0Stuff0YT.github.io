@@ -5,133 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James's Site for Socials and Info</title>
     <style>
-        /* --- GLOBAL APP CONFIGURATION --- */
+        /* --- DYNAMIC RESPONSIVE BODY --- */
         body {
-            background-color: #2b2b2b; /* CustomTkinter standard dark mode background */
-            color: #ffffff;
+            background-color: darkgray; /* Matches your CustomTkinter window setup */
+            color: #000000;
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Enforces your exact 1990x919 canvas workspace simulation */
-        #app-window {
-            width: 1920px;
-            height: 1080px;
-            background-color: darkgray; /* Matches your master background configuration */
-            position: relative;
+            min-height: 100vh;
             box-sizing: border-box;
-            color: #000000; /* Dark text matching raw Tkinter defaults */
         }
 
-        /* --- NAVIGATION HEADER BAR --- */
+        /* --- APPLICATION CONTAINER FRAME --- */
+        #app-window {
+            width: 100%;
+            max-width: 1280px; /* Scales elegantly across all high-res displays */
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        /* --- HEADER PANEL NAVIGATION LINK CONTAINER --- */
         .nav-container {
             position: absolute;
-            top: 8%;
-            right: 13%; /* Positions navbar exactly where your relx=0.75 buttons sat */
+            top: 40px;
+            right: 40px;
             display: flex;
-            gap: 15px;
-            transform: translateY(-50%);
+            gap: 12px;
         }
 
         .ctk-button {
-            background-color: #1f538d; /* CustomTkinter standard blue button color */
+            background-color: #1f538d; /* CustomTkinter default button theme color */
             color: white;
             border: none;
             border-radius: 6px;
-            width: 80px;
-            height: 30px;
-            font-size: 13px;
+            padding: 6px 16px;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
+            transition: background-color 0.15s, transform 0.1s;
         }
 
         .ctk-button:hover {
-            background-color: #2970c2; /* Hover highlight effect */
+            background-color: #2970c2;
+            transform: scale(1.05);
         }
 
-        /* --- MAIN TITLE LAYOUT --- */
+        /* --- APP HEADER TITLE PANEL --- */
         .title-header {
-            position: absolute;
-            left: 50%;
-            top: 20%;
-            transform: translate(-50%, -50%);
-            font-size: 65px;
+            font-size: 48px;
             font-weight: bold;
-            font-family: 'Arial', sans-serif;
-            white-space: nowrap;
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            max-width: 90%;
         }
 
-        /* --- IMAGE SLOTS (LOCKED BOUNDS TO PREVENT STRETCHING) --- */
-        .app-image {
-            width: 420px;   /* Your exact size setting width */
-            height: 220px;  /* Your exact size setting height */
-            object-fit: cover; /* Keeps image sharp and unwarped */
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        /* --- SCREEN STATES (Hidden by default, toggled via JS) --- */
+        /* --- THE VIEWS CONTROL HUB --- */
         .screen {
             display: none;
             width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
+            flex-grow: 1;
         }
 
         .active-screen {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* --- SCREEN CHANNELS POSITIONING --- */
-        
-        /* Welcome Screen View */
-        #welcome-view .image-position {
-            position: absolute;
-            left: 50%;
-            top: 55%;
-            transform: translate(-50%, -50%);
+        /* --- FIXED BOUNDS PROFILE IMAGE CONTAINER (NO STRETCH) --- */
+        .image-wrapper {
+            width: 420px;          /* Your locked width size constraint */
+            height: 220px;         /* Your locked height size constraint */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            background-color: #a0a0a0; /* Temporary box fill while asset asset loads */
         }
 
-        /* Info Screen View */
-        #info-view .image-position {
-            position: absolute;
-            left: 25%;
-            top: 55%;
-            transform: translate(-50%, -50%);
+        .app-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;  /* ENFORCED FIX: Forces image to fit cleanly without squishing! */
+            background-color: transparent;
+        }
+
+        /* --- SIDE BY SIDE GRID FOR THE INFO SCREEN --- */
+        .info-layout-grid {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            width: 90%;
+            max-width: 1100px;
+            margin-top: -40px;
         }
 
         .bio-text-block {
-            position: absolute;
-            left: 62%;
-            top: 55%;
-            transform: translate(-50%, -50%);
-            font-size: 22px;
+            font-size: 18px;
             line-height: 1.6;
             font-weight: bold;
-            font-family: 'Arial', sans-serif;
-            white-space: pre-line; /* Keeps your script's exact line breaks intact */
+            text-align: left;
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 8px;
+            white-space: pre-line; /* Honors original newlines safely */
         }
 
-        /* Code Screen View */
+        /* --- CONTENT ACTION LAYOUTS --- */
         .content-btn-large {
             background-color: #1f538d;
             color: white;
             border: none;
             border-radius: 8px;
             width: 180px;
-            height: 85px;
+            height: 75px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -139,30 +136,18 @@
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.15s, transform 0.1s;
         }
 
         .content-btn-large:hover {
             background-color: #2970c2;
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
-        #code-view .btn-position {
-            position: absolute;
-            left: 50%;
-            top: 55%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Socials Screen View */
-        #social-view .social-row {
-            position: absolute;
-            left: 50%;
-            top: 55%;
-            transform: translate(-50%, -50%);
+        .social-row {
             display: flex;
-            gap: 40px; /* Spacing between YT and Discord frames */
+            gap: 25px;
         }
     </style>
 </head>
@@ -180,28 +165,28 @@
         <div id="master-title" class="title-header">James's Site for Socials and Info</div>
 
         <div id="welcome-view" class="screen active-screen">
-            <div class="image-position">
+            <div class="image-wrapper">
                 <img class="app-image" src="pfp new.png" alt="James's PFP">
             </div>
         </div>
 
         <div id="info-view" class="screen">
-            <div class="image-position">
-                <img class="app-image" src="pfp new.png" alt="James's PFP">
-            </div>
-            <div class="bio-text-block">My name is James and I'm from Ohio, I have two cats and one dog,
-I was actually born in El paso, Texas, and moved to Ohio when I
-was two. I started doing YT when I was 9(I know, that's crazy!) I
-had always wanted to do YT ever since I was like five or something
+            <div class="info-layout-grid">
+                <div class="image-wrapper">
+                    <img class="app-image" src="pfp new.png" alt="James's PFP">
+                </div>
+                <div class="bio-text-block">My name is James and I'm from Ohio, I have two cats and one dog, 
+I was actually born in El paso, Texas, and moved to Ohio when I 
+was two. I started doing YT when I was 9(I know, that's crazy!) I 
+had always wanted to do YT ever since I was like five or something 
 I can't remember I have the memory of a goldfish. I have always been
-good at math and science related topics, go ahead call me a nerd.
+good at math and science related topics, go ahead call me a nerd. 
 I'm absolutely goated at video games!!</div>
+            </div>
         </div>
 
         <div id="code-view" class="screen">
-            <div class="btn-position">
-                <a class="content-btn-large" href="https://james-does-stuff.itch.io/mining-simulator-alpha" target="_blank">Mining Simulator</a>
-            </div>
+            <a class="content-btn-large" href="https://james-does-stuff.itch.io/mining-simulator-alpha" target="_blank">Mining Simulator</a>
         </div>
 
         <div id="social-view" class="screen">
@@ -215,19 +200,19 @@ I'm absolutely goated at video games!!</div>
 
     <script>
         function switchScreen(screenId, headerText) {
-            // Log active route states cleanly to simulation terminal
-            console.log("Routing to: " + screenId);
-
-            // 1. Instantly drop and hide all frame containers 
+            // Hide all screen channels cleanly 
             var screens = document.getElementsByClassName('screen');
             for (var i = 0; i < screens.length; i++) {
                 screens[i].classList.remove('active-screen');
+                screens[i].style.display = 'none';
             }
 
-            // 2. Bring target viewport frame state online
-            document.getElementById(screenId).classList.add('active-screen');
+            // Bring target viewport active screen online dynamically
+            var targetScreen = document.getElementById(screenId);
+            targetScreen.classList.add('active-screen');
+            targetScreen.style.display = 'flex';
 
-            // 3. Mutate master script heading configuration values safely
+            // Swap header window titles
             document.getElementById('master-title').innerText = headerText;
         }
     </script>
