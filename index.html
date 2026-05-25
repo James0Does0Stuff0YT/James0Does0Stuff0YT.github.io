@@ -60,6 +60,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             border: 1px solid #2d2d2d;
             margin-bottom: 30px;
+            position: relative; /* Allows precise secret placement inside */
         }
 
         h1 {
@@ -69,7 +70,7 @@
             transition: color 0.3s ease;
         }
 
-        /* Content Scenes (Hidden by Default, Fades in via JS) */
+        /* Content Scenes */
         .scene {
             display: none;
             opacity: 0;
@@ -107,7 +108,7 @@
             margin-top: 20px;
         }
 
-        /* Action Buttons (Replacing your CustomTkinter CTkButtons) */
+        /* Action Buttons */
         .action-card {
             background: #1e1e1e;
             color: #ffffff;
@@ -134,6 +135,24 @@
         .btn-youtube:hover { border-color: #ff0000; color: #ff0000; }
         .btn-discord:hover { border-color: #5865F2; color: #5865F2; }
         .btn-game:hover { border-color: #ff4757; color: #ff4757; }
+
+        /* The Secret Link */
+        .secret-link {
+            color: #1e1e1e; /* Exactly matches the background card color */
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            position: absolute;
+            bottom: 8px;
+            right: 15px;
+            user-select: none; /* Prevents accidentally highlighting it when selecting text */
+            transition: color 0.2s ease;
+        }
+        
+        /* Subtly glows just a little bit if they happen to hover directly over the exact pixel */
+        .secret-link:hover {
+            color: #2d2d2d;
+        }
     </style>
 </head>
 <body>
@@ -182,29 +201,26 @@
                 </div>
             </div>
 
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="secret-link">.</a>
+
         </div>
 
     </div>
 
     <script>
         function switchScene(sceneId, buttonElement) {
-            // 1. Remove active state from all navigation buttons
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            // 2. Highlight current nav button
             buttonElement.classList.add('active');
 
-            // 3. Hide all content scenes smoothly
             document.querySelectorAll('.scene').forEach(scene => {
                 scene.classList.remove('active');
             });
 
-            // 4. Target and show the requested content scene
             const targetScene = document.getElementById('scene-' + sceneId);
             if (targetScene) {
                 targetScene.classList.add('active');
             }
             
-            // Console log to check action routing exactly like your python print statements
             console.log("Switched to scene: " + sceneId);
         }
     </script>
