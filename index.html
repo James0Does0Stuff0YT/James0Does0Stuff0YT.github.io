@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon-index.png">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JamesGames | Studio</title>
+    <audio id="bg-music" loop>
+        <source src="The-Sickest-Trap-Beat-Ever-Piano-cover.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap');
+        @import "https://www.nerdfonts.com/assets/css/webfont.css";
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Ubuntu Nerd Font'; background: radial-gradient(circle at top right, #1a0b2e, #0a0a0a); color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        nav { position: fixed; width: 100%; display: flex; justify-content: space-between; padding: 25px 10%; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo { font-weight: 700; font-size: 1.8rem; letter-spacing: 3px; cursor: pointer; }
+        .logo span { color: #00d4ff; }
+        .logo2 { font-weight: 700; font-size: 2.8rem; letter-spacing: 3px; cursor: pointer; }
+        .logo2 span { color: #00d4ff; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 40px; }
+        nav ul li a { text-decoration: none; color: #fff; font-weight: 300; transition: 0.3s; }
+        nav ul li a:hover { color: #00d4ff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: 5rem; margin-bottom: 10px; background: linear-gradient(to right, #9d50bb, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        section { padding: 120px 10%; }
+        h2 { font-size: 3rem; margin-bottom: 50px; text-align: center; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: auto; }
+        .card { 
+            background: rgba(255, 255, 255, 0.03); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: 0.4s; 
+            text-align: center; 
+        }
+        .card:hover { transform: translateY(-15px); border-color: #00d4ff; background: rgba(255, 255, 255, 0.06); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .btn { display: inline-block; padding: 15px 35px; background: linear-gradient(45deg, #7000ff, #00d4ff); color: white; text-decoration: none; border-radius: 50px; margin-top: 25px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        @font-face {
+            font-family: "Ubuntu Nerd Font";
+            src: url("https://mshaugh.github.io/nerdfont-webfonts/build/fonts/UbuntuNerdFont-Regular.woff2") format("woff2");
+            font-stretch: normal;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .member { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; }
+        .member h3 { color: #00d4ff; }
+
+        .game_title {
+            font-size: xx-large;
+            text-transform: uppercase;
+        }
+
+        footer { text-align: center; padding: 40px; opacity: 0.5; font-size: 0.9rem; }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #9d50bb; }
+        }
+        .hero h1 { animation: glow 2s infinite alternate; }
+        .card:hover { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; top: 0; left: 0; }
+       
+    </style>
+    
+</head>
+<body>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <nav>
+        <div class="logo">JAMES<span>GAMES</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#games">Projects</a></li>
+            <li><a href="#discord">Discord</a></li>
+            <li><a href="#socials">Socials</a></li>
+            <li><a href="#application">Applications</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="logo2">JAMES<span>GAMES</span></div>
+        <p>Building the next generation of indie simulators.</p>
+        <a href="#games" class="btn">Explore Projects</a>
+        <button id="audio-toggle" class="btn" onclick="toggleAudio()">Play/Pause Music</button>
+       
+    </section>
+
+    <section id="about">
+        <h2>Studio Philosophy</h2>
+        <p style="max-width: 700px; margin: auto; text-align: center; font-size: 1.2rem; opacity: 0.8;">
+            Here at JamesGames we are a small indie-dev team working to make the best games that we can.
+            We work hard to push out updates for our games and we give what the community wants.
+        </p>
+    </section>
+    
+    <section id="team">
+        <h2>The Team</h2>
+        <div class="grid" style="max-width: 800px;">
+            <div class="card member">
+                <h3>James_Does_Stuff</h3>
+                <p>Lead Developer</p>
+            </div>
+            <div class="card member">
+                <h3>Agent Hamz</h3>
+                <p>Concept Artist</p>
+            </div>
+            <div class="card member">
+                <h3>JustaRandomDudSMN</h3>
+                <p>Concept Artist</p>
+            </div>
+            <div class="card member">
+                <h3>CyanideTech</h3>
+                <p>3D Artist</p>
+            </div>
+            <div class="card member">
+                <h3>Heffalump</h3>
+                <p>Web design</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="games">
+        <h2>Our Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3 class="game_title">Mining Simulator</h3>
+                <p style="margin-top: 15px;">Gather materials, upgrade your tools, and master the depths.</p>
+                <p style="font-weight: bold;">(FREE DEMO AVAILABLE!)</p>
+                <a href="https://james-does-stuff.itch.io/mining-simulator" class="btn" target="_blank">Play Now</a>
+                <a href="mining-simulator-changelog.html" class="btn" target="_blank">Changelog</a>
+                <a href="mining-simulator-wiki.html" class="btn" target="_blank">Wiki</a>
+                <p style="max-width: 700px; margin: auto; text-align: center; font-size: 1.2rem; opacity: 0.8;">
+                    <b>We plan on releasing Mining Simulator to Steam within the next year, but purchase via itch.io will still be avalible for a minimum of $5.00 or however much you are willing to pay.</b><br>
+                    <i>Team members get lifetime access for free!</i>
+                </p>
+            </div>            
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 class="game_title">James Coin Clicker Clicking Again</h3>
+                <p style="margin-top: 15px;">Click to collect as many JamesCoins as you can!</p>
+                <a href="https://james-does-stuff.itch.io/james-coin-clicker-clicking-again" class="btn" target="_blank">Play Now</a>
+            </div>            
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3 class="game_title">Chicken Simulator</h3>
+                <p style="font-weight: bold;">(FREE UNTIL FULL RELEASE!)</p>
+                <p style="margin-top: 15px;">Cause as much carnage as you can!</p>
+                <a href="https://james-does-stuff.itch.io/chicken-simulator" class="btn" target="_blank">Play Open Beta Now</a>
+            </div>            
+        </div>
+    </section>
+
+    <section id="discord">
+        <h2>Join Our Discord Server</h2>
+        <div class="card">
+            <a href="https://discord.gg/SYxTAymyQ2" class="btn" target="_blank">&#xf1ff; Discord</a>
+        </div>
+    </section>
+    <section id="socials">
+        <h2>Check out our socials</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>James_Does_Stuff</h3>
+                <a href="https://discord.gg/ZX4DPTYZeF" class="btn" target="_blank">&#xf1ff; James's Discord Server</a>
+                <a href="https://youtube.com/@james_does_stuff_yt" class="btn" target="_blank">&#xf16a; YouTube</a>
+                <a href="https://kick.com/james-does-stuff-yt" class="btn" target="_blank">Kick</a>
+            </div>
+            <div class="card">
+                <h3>Agent Hamz</h3>
+                <a href="https://youtube.com/@agenthamz-m7d" class="btn" target="_blank">&#xf16a; YouTube</a>
+            </div>
+            <div class="card">
+                <h3>JustaRandomDudSMN</h3>
+                <a href="https://youtube.com/@justarandomdudcalleddandycool" class="btn" target="_blank">&#xf16a; YouTube</a>
+            </div>
+            <div class="card">
+                <h3>CyanideTech</h3>
+                <a href="https://youtube.com/@cyanide_pill_eater" class="btn" target="_blank">&#xf16a; YouTube</a>
+                <a href="https://twitch.tv/cyanidetech" class="btn" target="_blank">&#xf1e8; Twitch</a>
+                <a href="mailto:juniorgooberson@gmail.com" class="btn" target="_blank">&#xf01ee; Email</a>
+                <a href="https://github.com/CyanideTech" class="btn" target="_blank">&#xea84; GitHub</a>
+            </div>
+            <div class="card">
+                <h3>Heffalump</h3>
+                <a href="https://jack.techpyre.com" class="btn" target="_blank">&#xef8a; Website</a>
+                <a href="https://github.com/FrodoBaggins52" class="btn" target="_blank">&#xea84; GitHub</a>
+                <a href="mailto:jack@techpyre.com" class="btn" target="_blank">&#xf01ee; Email</a>
+            </div>
+        </div>
+    </section>
+    <section id="application">
+        <h2>Join the dev team!</h2>
+        <div class="card">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScIiU29Ds10zN0EJ3C3kG8ELTnaFlJARxrGqM8Qn6KT30lfvg/viewform?usp=header" class="btn" target="_blank">&#xf0219; Click here to fill out an application</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 JamesGames Studio. Built for the community.</p>
+        <p>Founded by James_Does_Stuff, co-founded Agent hamz.</p>
+        <a href="tos.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <div class="logo">JAMES<span>GAMES</span></div>
+    </footer>
+    <script>
+      function toggleAudio() {
+        const audio = document.getElementById("bg-music");
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      }
+        particlesJS("particles-js", {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#ffffff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5 },
+            "size": { "value": 3 },
+            "move": { "enable": true, "speed": 1 }
+          }
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        });
+        
+        document.querySelectorAll('.card, h2').forEach((el) => {
+            el.style.opacity = 0;
+            el.style.transition = "all 0.8s ease-out";
+            el.style.transform = "translateY(50px)";
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
